@@ -1,8 +1,8 @@
-import { ButtonGroup, IconButton,Button } from '@chakra-ui/react';
-import React, { useState } from 'react'
+import {ButtonGroup, IconButton,Button} from '@chakra-ui/react';
+import React, {useState} from 'react'
 
 const ItemCount = () => {
-    const [contador, setContador] = useState(0);
+    const [contador, setContador] = useState("");
     const sumar = () =>{
         setContador (contador +1);        
     }

@@ -5,8 +5,13 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  MenuItem,  
+  MenuItem,
+  Flex,
+  Spacer,
+  Box,
+  Heading 
 } from '@chakra-ui/react'
+import {  } from '@chakra-ui/react'
 import ItemCount from './ItemCount'
 import { Link } from 'react-router-dom'
 import { ChevronDownIcon } from "@chakra-ui/icons"
@@ -14,26 +19,19 @@ import { ChevronDownIcon } from "@chakra-ui/icons"
 const NavBar = () => {
   return (
     <>
-  
+  <Flex minWidth='max-content' alignItems='center' gap='2'>
+
+  <Box p='2'>
     
-     <Link to={"/"}>La Forja de Moradin</Link>
-     <Menu>
+    <Heading size='md'> <Link to={"/"}>La Forja de Moradin</Link></Heading>
+     </Box>
+     <Spacer />
      <Link to={"/catalogue"}>
-     <MenuButton as={Button} size="lg" variant="outline"            colorScheme="blue"
-                  m="5" >
-                  Catalogo
-                </MenuButton>
-     </Link>
-       </Menu>
+     <Button as={Button} colorScheme='telegram' size="lg" variant="outline" m="5" >
+             Catalogo
+      </Button></Link>
        <Menu>
-              <MenuButton
-                as={Button}
-                size="lg"
-                variant="outline"
-                colorScheme="blue"
-                rightIcon={<ChevronDownIcon />}
-                m="5"
-              >
+              <MenuButton  as={Button} size="lg" variant="outline"  colorScheme="telegram"          rightIcon={<ChevronDownIcon />}  m="5">
                 Categorias
               </MenuButton>
               <MenuList className="menu-list">
@@ -46,11 +44,20 @@ const NavBar = () => {
                 </MenuList>
             </Menu>
             <Link to={"/cart"}>
-              <CartWidget />
+              
             </Link>
             
             <ItemCount/>
-  
+
+ 
+
+
+</Flex>
+
+
+
+
+
     </>
   )
 }

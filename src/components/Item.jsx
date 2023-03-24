@@ -12,8 +12,8 @@ import {
   CardFooter,
   Button,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
-const Item = ({ id, name, stock, category }) => {
+import {Link} from "react-router-dom";
+const Item = ({id, name, stock, category, onAddToCart}) => {
   return (
     <div>
       <div key={id}>
@@ -35,9 +35,8 @@ const Item = ({ id, name, stock, category }) => {
             <Divider />
             <CardFooter className="card-footer">
               <Center className="btn-center">
-                <Button variant="solid" colorScheme="blue">
-                  <Link to={`./item${id}`}>Detalles</Link>
-                </Button>
+                <Link to={`/item/${id}`}><Button onClick={onAddToCart}>Agregar al Carrito
+                </Button></Link>
               </Center>
             </CardFooter>
           </Card>

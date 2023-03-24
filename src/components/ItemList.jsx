@@ -1,18 +1,19 @@
-import Item from "./Item.jsx";
-import { Container } from "@chakra-ui/react";
-const ItemList = ({armeria}) => {
+import Item from "./Item";
+import {Container} from "@chakra-ui/react";
+const ItemList = ({armerias}) => {
   return (
     <>
       <Container>
-        {armeria?.map((armeria) => (
+        {armerias.map((armeria) => (
           <Item
-            key={armeria.id}armeria
+            key={armeria.id}
             id={armeria.id}
             name={armeria.name}
             description={armeria.description}
             price={armeria.price}
             stock={armeria.stock}
             category={armeria.category}
+            onAddToCart={() => onAddToCart(armeria)}
           />
         ))}
       </Container>
