@@ -1,23 +1,24 @@
 import Item from "./Item";
-import {Container} from "@chakra-ui/react";
-const ItemList = ({armerias}) => {
+import { Container } from "@chakra-ui/react";
+
+const ItemList = ({ products, onAddToCart }) => {
+  if (!products) return null;
+
   return (
-    <>
-      <Container>
-        {armerias.map((armeria) => (
-          <Item
-            key={armeria.id}
-            id={armeria.id}
-            name={armeria.name}
-            description={armeria.description}
-            price={armeria.price}
-            stock={armeria.stock}
-            category={armeria.category}
-            onAddToCart={() => onAddToCart(armeria)}
-          />
-        ))}
-      </Container>
-    </>
+    <Container>
+      {products.map((product) => (
+        <Item
+          key={product.id}
+          id={product.id}          
+          name={product.name}
+          image={product.image}
+          detail={product.detail}
+          price={product.price}
+          category={product.category}
+          onAddToCart={() => onAddToCart(product)}
+        />
+      ))}
+    </Container>
   );
 };
 

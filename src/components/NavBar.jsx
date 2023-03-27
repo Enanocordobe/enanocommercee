@@ -41,10 +41,16 @@ const NavBar = () => {
                 <Link to={`/category/${"Espadas"}`}>
                   <MenuItem>Espadas</MenuItem>
                 </Link>
+                <Link to={`/category/${"Guadaña"}`}>
+                  <MenuItem>Guadañas</MenuItem>
+                </Link>
+                <Link to={`/category/${"Hoz"}`}>
+                  <MenuItem>Hoz</MenuItem>
+                </Link>
                 </MenuList>
             </Menu>
             <Link to={"/cart"}>
-              
+              <CartWidget/>
             </Link>
             
             <ItemCount/>

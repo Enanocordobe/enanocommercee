@@ -1,47 +1,41 @@
 import React from "react";
-import espada from "../assets/espada.jpg";
 import {
   Center,
   Card,
   CardBody,
-  Image,
   Heading,
   Text,
   Divider,
   Stack,
   CardFooter,
   Button,
+  Image,
 } from "@chakra-ui/react";
-import {Link} from "react-router-dom";
-const Item = ({id, name, stock, category, onAddToCart}) => {
-  return (
-    <div>
-      <div key={id}>
-        <Center p="1rem">
-          <Card className="card-main">
-            <CardBody>
-              <Image borderRadius="lg" src={espada} />
-              <Stack mt="6" spacing="3">
-                <Heading size="md">{name}</Heading>
+import { Link } from "react-router-dom";
 
-                <Text color="blue.800" fontSize="l">
-                  Categoria: {category}
-                </Text>
-                <Text color="red.600" fontSize="xl">
-                  Stock: {stock}
-                </Text>
-              </Stack>
-            </CardBody>
-            <Divider />
-            <CardFooter className="card-footer">
-              <Center className="btn-center">
-                <Link to={`/item/${id}`}><Button onClick={onAddToCart}>Agregar al Carrito
-                </Button></Link>
-              </Center>
-            </CardFooter>
-          </Card>
-        </Center>
-      </div>
+const Item = ({ id, name, image, detail, price, onAddToCart }) => {
+  return (
+    <div key={id}>
+      <Center p="1rem">
+        <Card className="card-main">
+          <CardBody>
+            <Stack mt="6" spacing="3">
+              <Heading size="md">{name}</Heading>
+              <Text>{detail}</Text>
+              <Image src={image} />
+            </Stack>
+          </CardBody>
+          <Divider />
+          <CardFooter className="card-footer">
+            <Center className="btn-center">
+              <Text>
+                <p>Precio:${price}</p>
+              </Text>
+              <Button onClick={onAddToCart}>Agregar al Carrito</Button>
+            </Center>
+          </CardFooter>
+        </Card>
+      </Center>
     </div>
   );
 };

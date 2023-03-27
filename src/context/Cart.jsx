@@ -2,8 +2,8 @@ import React from 'react'
 
 
 
- const Cart = (props) => {
-        const { cartItems, onRemoveCartItem } = props;
+ const Cart = (carrito) => {
+        const { cartItems, onRemoveCartItem } = carrito;
         return (
           <div>
             {cartItems.length === 0 && <div>Carrito esta vacio</div>}
@@ -15,9 +15,7 @@ import React from 'react'
                 <button onClick={() => onRemoveCartItem(armeria)}>Vaciar Carrito</button>
               </div>
             ))}
-            <div><span className="material-symbols-outlined">
-    shopping_cart
-    </span></div>
+            
           </div>
         );
       }    

@@ -5,9 +5,11 @@ import Welcome from './components/Welcome'
 import ItemDetailContainer from './components/ItemDetailContainer'
 import StateComponent from './context/StateComponent'
 import Cart from './context/Cart'
+import ShoppingCartContext from './context/ShoppingCartContext'
 
 const App = () => {
   return (
+    <ShoppingCartContext>
     <StateComponent>
 
     <BrowserRouter>    
@@ -22,6 +24,7 @@ const App = () => {
        </Routes>             
       </BrowserRouter> 
    </StateComponent>
+   </ShoppingCartContext>
   )
 }
 
