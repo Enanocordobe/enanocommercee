@@ -1,35 +1,31 @@
 import { createContext, useState } from "react";
-import ItemList from "../components/ItemList";
-import Cart from "./Cart";
+
 
 const CartContext = createContext(null);
 
 const ShoppingCartContext = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCartHandler = (armas) => {
-    const existItem = cartItems.find((item) => item.id === armas.id);
+  const onAddToCart = (products) => {
+    const existItem = cartItems.find((item) => item.id === products.id);
     if (existItem) {
       setCartItems(
         cartItems.map((item) =>
-          item.id === armas.id ? { ...existItem, qty: existItem.qty + 1 } : item
+          item.id === products.id ? { ...existItem, qty: existItem.qty + 1 } : item
         )
       );
     } else {
-      setCartItems([...cartItems, { ...armas, qty: 1 }]);
+      setCartItems([...cartItems, { ...products, qty: 1 }]);
     }
   };
 
-  const removeCartItemHandler = (armas) => {
-    const newCartItems = cartItems.filter((item) => item.id !== armas.id);
+  const onRemoveCartItem = (products) => {
+    const newCartItems = cartItems.filter((item) => item.id !== products.id);
     setCartItems(newCartItems);
   };
 
-  return (
-    <CartContext.Provider value={{ cartItems, setCartItems }}>
-      <h1>Carrito de Compras</h1>
-      <ItemList onAddToCart={addToCartHandler} />
-      <Cart cartItems={cartItems} onRemoveCartItem={removeCartItemHandler} />
+  return (    
+    <CartContext.Provider value={{ cartItems, setCartItems, onAddToCart, onRemoveCartItem }}>    
       {children}
     </CartContext.Provider>
   );

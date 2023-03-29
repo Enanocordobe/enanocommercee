@@ -17,9 +17,7 @@ const ItemListContainer = () => {
     });
   }, []);
 
-  const handleAddToCart = (product) => {
-    console.log("Added to cart:", product);
-  };
+  
 
   return (
     <div>
@@ -32,7 +30,7 @@ const ItemListContainer = () => {
             ? products.filter((prod) => prod.category === category)
             : products
         }
-        onAddToCart={handleAddToCart}
+        
       />
     </div>
   );

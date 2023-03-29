@@ -6,9 +6,9 @@ import ItemCount from "./ItemCount";
 import { useState, useEffect } from "react";
 import { doc, getFirestore } from "firebase/firestore";
 
-const ItemDetail = ({ armas }) => {
+const ItemDetail = ({ product }) => {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
+  const [productDetail, setProductDetail] = useState(null);
 
   useEffect(() => {
     const db = getFirestore();
@@ -17,12 +17,12 @@ const ItemDetail = ({ armas }) => {
     oneItem.get().then((snapshot) => {
       if (snapshot.exists()) {
         const data = snapshot.data();
-        setProduct(data);
+        setProductDetail(data);
       }
     });
   }, [id]);
 
-  if (!product) {
+  if (!productDetail) {
     return <div><CircularProgress isIndeterminate color='green.300' />Cargando...</div>;
   }
 
@@ -32,21 +32,22 @@ const ItemDetail = ({ armas }) => {
         <Card className="card-main">
           <CardBody>
             <Stack mt="6" spacing="3">
-              <Heading size="md">{product.name}</Heading>
+              <Heading size="md">{productDetail.name}</Heading>
               <Text color="blue.800" fontSize="l">
-                Detalles: {product.detail}
+                Detalles: {productDetail.detail}
               </Text>
               <Text color="green.600" fontSize="xl">
-                Precio: {product.price}po
+                Precio: {productDetail.price}po
               </Text>
             </Stack>
           </CardBody>
           <Divider />
           <CardFooter className="card-footer">
+          
             <ItemCount
               id={id}
-              price={product.price}
-              name={product.name}
+              price={productDetail.price}
+              name={productDetail.name}
             />
           </CardFooter>
         </Card>

@@ -1,7 +1,7 @@
 import Item from "./Item";
 import { Container } from "@chakra-ui/react";
 
-const ItemList = ({ products, onAddToCart }) => {
+const ItemList = ({ products}) => {
   if (!products) return null;
 
   return (
@@ -14,8 +14,7 @@ const ItemList = ({ products, onAddToCart }) => {
           image={product.image}
           detail={product.detail}
           price={product.price}
-          category={product.category}
-          onAddToCart={() => onAddToCart(product)}
+          category={product.category}          
         />
       ))}
     </Container>

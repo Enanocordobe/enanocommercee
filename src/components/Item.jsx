@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Center,
   Card,
@@ -11,9 +11,11 @@ import {
   Button,
   Image,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { CartContext } from "../context/ShoppingCartContext";
 
-const Item = ({ id, name, image, detail, price, onAddToCart }) => {
+const Item = ({ id, name, image, detail, price }) => {
+  const { onAddToCart } = useContext(CartContext); 
+
   return (
     <div key={id}>
       <Center p="1rem">
@@ -31,7 +33,7 @@ const Item = ({ id, name, image, detail, price, onAddToCart }) => {
               <Text>
                 <p>Precio:${price}</p>
               </Text>
-              <Button onClick={onAddToCart}>Agregar al Carrito</Button>
+              <Button onClick={() => onAddToCart({ id, name, image, detail, price })}>Agregar al Carrito</Button> 
             </Center>
           </CardFooter>
         </Card>

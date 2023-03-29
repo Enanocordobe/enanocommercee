@@ -3,16 +3,17 @@ import ItemListContainer from './components/ItemListContainer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Welcome from './components/Welcome'
 import ItemDetailContainer from './components/ItemDetailContainer'
-import StateComponent from './context/StateComponent'
-import Cart from './context/Cart'
+//import StateComponent from './context/StateComponent'
+import Cart from './components/Cart'
 import ShoppingCartContext from './context/ShoppingCartContext'
 
 const App = () => {
   return (
-    <ShoppingCartContext>
-    <StateComponent>
+    
+    //<StateComponent>
 
-    <BrowserRouter>    
+    <BrowserRouter> 
+    <ShoppingCartContext>   
        <NavBar/>
        <Routes>
        <Route exact path="/" element={<Welcome/>}/>
@@ -21,10 +22,11 @@ const App = () => {
        <Route exact path="/item/:id" element={<ItemDetailContainer/>}/>
        <Route exact path="/cart" element={<Cart/>}/>
        
-       </Routes>             
+       </Routes> 
+       </ShoppingCartContext>           
       </BrowserRouter> 
-   </StateComponent>
-   </ShoppingCartContext>
+   //</StateComponent>
+   
   )
 }
 
