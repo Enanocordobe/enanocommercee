@@ -1,76 +1,96 @@
 import React from 'react'
-import CartWidget from './CartWidget'
+import CartWidget from "./CartWidget";
+import { Link } from "react-router-dom";
 import {
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Flex,
-  Spacer,
-  Box,
-  Heading 
-} from '@chakra-ui/react'
-import {  } from '@chakra-ui/react'
-import ItemCount from './ItemCount'
-import { Link } from 'react-router-dom'
-import { ChevronDownIcon } from "@chakra-ui/icons"
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    Button,
+    Box,
+    Center,
+    Wrap,
+    WrapItem,
+    Avatar
+  } from '@chakra-ui/react'
+import { ChevronDownIcon } from '@chakra-ui/icons';
+import { Flex, Spacer } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
+
+
 
 const NavBar = () => {
-  return (
-    <>
-  <Flex minWidth='max-content' alignItems='center' gap='2'>
-
-  <Box p='2'>
-    
-    <Heading size='md'> <Link to={"/"}>La Forja de Moradin</Link></Heading>
-     </Box>
-     <Spacer />
-     <Link to={"/catalogue"}>
-     <Button as={Button} colorScheme='telegram' size="lg" variant="outline" m="5" >
-             Catalogo
-      </Button></Link>
-       <Menu>
-              <MenuButton  as={Button} size="lg" variant="outline"  colorScheme="telegram"          rightIcon={<ChevronDownIcon />}  m="5">
-                Categorias
-              </MenuButton>
-              <MenuList className="menu-list">
-                <Link to={`/category/${"Hachas"}`}>
-                  <MenuItem>Hachas</MenuItem>
-                </Link>
-                <Link to={`/category/${"Espadas"}`}>
-                  <MenuItem>Espadas</MenuItem>
-                </Link>
-                <Link to={`/category/${"Guadaña"}`}>
-                  <MenuItem>Guadañas</MenuItem>
-                </Link>
-                <Link to={`/category/${"Hoz"}`}>
-                  <MenuItem>Hoz</MenuItem>
-                </Link>
-                </MenuList>
-            </Menu>
-            <Link to={"/cart"}>
-              <CartWidget/>
-            </Link>
-            
-            <ItemCount/>
-
- 
-
-
-</Flex>
-
-
-
-
-
-    </>
-  )
-}
-  
-export default NavBar
+    return (
+<>
+    <Box  className='navbar'  bg="gray.300" color="#262626">
+        <Flex alignItems="center" justifyContent="space-between"  gap="2" >
         
- 
+            
+    <Box>                 
+           <Heading size="sm" >
+<Wrap>
+  <WrapItem>
+    <Avatar size='xl' name='Enano Con armadura' src='https://mir-s3-cdn-cf.behance.net/project_modules/fs/678b59112524843.6016492f54472.jpg' />
+  </WrapItem>
+</Wrap>
+                    <Link to={"/"}>
+                            <h1>LA FORJA DE MORADIN</h1>
+                    </Link>
+                    </Heading>
+                </Box>
+                <Box mr="85" >
+                    <Menu >
+                        <Link to={"/catalogue"}>
+                            <MenuButton
+                            as={Button}
+                            size="lg"
+                            variant="outline"
+                            colorScheme="pink"
+                            mx="2"
+                            mr="85"
+                            >
+                            Catalogo
+                            </MenuButton>
+                        </Link>
+                    </Menu>
+                    <Menu>
+                        <MenuButton
+                            as={Button}
+                            size="lg"
+                            variant="outline"
+                            colorScheme="pink"
+                            rightIcon={<ChevronDownIcon />}
+                            mx="2"
+                        >
+                            Categorias
+                        </MenuButton>
+                    <MenuList>
+                        <Link to={`/category/${"Hachas"}`}>
+                            <MenuItem>Hachas</MenuItem>
+                        </Link>
+                        <Link to={`/category/${"Espadas"}`}>
+                            <MenuItem>Espadas</MenuItem>
+                        </Link>
+                        <Link to={`/category/${"Guadaña"}`}>
+                            <MenuItem>Guadañas</MenuItem>
+                        </Link>
+                        <Link to={`/category/${"Hoz"}`}>
+                            <MenuItem>Hoz</MenuItem>
+                        </Link>
+                    </MenuList>
+                    </Menu>
+                </Box>
+                <Box p="30" >
+                    <Link to={"/cart"}>
+                    <CartWidget />
+                    </Link>
+                </Box>
+            </Flex>
+      
+    </Box>
+        </>
+    );
+    };
 
-
+export default NavBar
 

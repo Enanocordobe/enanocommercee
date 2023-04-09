@@ -1,37 +1,43 @@
-import ItemList from "./ItemList";
 import { useState, useEffect } from "react";
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
-import { Heading, Center } from "@chakra-ui/react";
-
+import { Text, Center, Image } from "@chakra-ui/react";
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 const ItemListContainer = () => {
-  const [products, setProducts] = useState([]);
+  const [armas, setarmas] = useState([]);
   const { category } = useParams();
 
   useEffect(() => {
     const db = getFirestore();
-    const itemsCollection = collection(db, "armas");
-    getDocs(itemsCollection).then((snapshot) => {
-      const docs = snapshot.docs.map((doc) => doc.data());
-      setProducts(docs);
+    const armasCollection = collection(db, "armas");
+    if (category) {
+      const armasFiltro = query (armasCollection , where("category","==", category))
+      getDocs(armasFiltro).then((querySnapshot)=>{
+          const armas = querySnapshot.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }));
+          setarmas(armas);
+          
+        })
+    }else
+    getDocs(armasCollection).then((querySnapshot) => {
+      const armas = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setarmas(armas);
     });
-  }, []);
+  }, [category]);
 
-  
 
+ 
   return (
-    <div>
-      <Center>
-        <Heading>Armas disponibles</Heading>
+    <div >
+      <Center bg="pink" h="50px" color="black">        
+        <Text p="10">LA FORJA DE MORADIN</Text>
       </Center>
-      <ItemList
-        products={
-          category
-            ? products.filter((prod) => prod.category === category)
-            : products
-        }
-        
-      />
+      <ItemList armas={armas} />
     </div>
   );
 };

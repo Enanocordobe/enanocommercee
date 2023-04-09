@@ -1,20 +1,25 @@
-import { useState, useEffect } from "react";
 import ItemDetail from "./ItemDetail";
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { useState, useEffect } from "react";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
-  const [productDetail, setProductDetail] = useState(null);
-
+    const [data, setData] = useState([]);
   useEffect(() => {
     const db = getFirestore();
-    const itemsCollection = collection(db, "armas");
-    getDocs(itemsCollection).then((snapshot) => {
-      const docs = snapshot.docs.map((doc) => doc.data());
-      setProductDetail(docs[0]);
+    const neumaticosCollection = collection(db, "armas");
+    getDocs(neumaticosCollection).then((querySnapshot) => {
+      const armas = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setData(armas);
     });
   }, []);
+    
+    
+    
+    return <ItemDetail armas={data} />;
 
-  return <ItemDetail product={productDetail} />;
-};
+    };
 
 export default ItemDetailContainer;

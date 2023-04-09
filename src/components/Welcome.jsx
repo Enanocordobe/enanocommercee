@@ -1,16 +1,43 @@
-import {Center, Box, Image } from "@chakra-ui/react";
+import { Heading, Center, Box,  Text, Image, Flex, SimpleGrid,  } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const Welcome = () => {
   return (
-    <div>
-      <Center>
-        <Box boxSize="xxl">
-          <Image
-            src="https://1.bp.blogspot.com/-utIAbNufKNE/Xkc0TIitD7I/AAAAAAAAEOw/LuHvBgjr7wMN8pjDPRvf0bDx60XP69t3wCEwYBhgL/s1600/Los%2BEnanos%252C%2BSe%25C3%25B1ores%2Bde%2Bla%2BForja%2By%2BReyes%2Bde%2Bla%2BMonta%25C3%25B1a%2B-%2BGuerreros%2BEnanos.jpg"
-            alt="Enano Facha"
-          />
-        </Box>
+    <div className="welcome-container">
+      <Center bg="#D6EAF8" h="100px" color="black">
+      
+        <Text p="4">Todo lo que puedas imaginar en armas lo conseguiras aqui, echate un vistazo</Text>
       </Center>
+      <Flex justifyContent="center" alignItems="center"  flex="1" mt="110px">
+        <Center>
+        <SimpleGrid columns={[1, 2, 4]} spacing="10px" w="100%" h="hacha"   >
+            <Link to={`/category/${"Hachas"}`}>
+              <Box h="450px" w="350px" marginRight="35px" textAlign="center">
+              <Text fontSize="4xl" fontWeight="bold">Hachas</Text>
+              </Box>
+            </Link>
+            
+            <Link to={`/category/${"Espadas"}`}>
+              <Box  h="450px" w="350px" marginRight="35px" textAlign="center">
+                <Text fontSize="4xl" fontWeight="bold">Espadas</Text>
+              </Box>
+            </Link> 
+           
+            <Link to={`/category/${"Guadaña"}`}>
+              <Box  h="450px" w="350px" marginRight="35px" textAlign="center">
+                <Text fontSize="4xl" fontWeight="bold">Guadañas</Text>
+              </Box>
+            </Link>  
+            
+            <Link to={`/category/${"Hoz"}`}>
+              <Box  h="450px" w="350px" marginRight="35px" textAlign="center">
+                <Text fontSize="4xl" fontWeight="bold">Hoz</Text>
+              </Box>
+            </Link> 
+            
+        </SimpleGrid>
+        </Center>
+      </Flex>
     </div>
   );
 };

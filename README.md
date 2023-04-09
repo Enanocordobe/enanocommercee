@@ -1,5 +1,2 @@
-# segundaentrega
-# segundaentrega
-# segundaentrega
-# enanocommerce
-# enanocommercee
+He creado esta aplicacion de Ecommerce respetando los componentes solicitados por coderhouse como guiandome y aprendiendo de react a traves de las clases, para lograrlo he creado componentes padres como ItemDetailContainer e ItemsListContainer, similares pero con funciones diferentes ya que uno aparte de traer los objetos del firestore tambien muestra en forma de tarjeta en el catalogo y lo exhibe en categorias, en cambio ItemDetail se encarga de mostrar el detalle del producto seleccionado y la opcion de agregar el producto al carrito.
+Se ha utilizado componentes de contexto como ShoppingCartContext, para que muestre la informacion del carrito y este sea funcional desde cualqueri ruta que lo veamos, abarcando a toda la aplicacion. Una vez agregados items al carrito a traves de las funciones de itemCount, podemos dirigirnos al componente Cart, el cual en forma de tarjeta mostrara por separado cada elemento seleccionado sin clonarse pero sumando el subtotal de cada producto, luego tendra un panel que aparecera sumando el total y un formulario que debera completar el cliente para finalizar la compra.
